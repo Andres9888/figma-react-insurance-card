@@ -35,9 +35,13 @@ const App = () => {
                     <Title>{title}</Title>
                     <Description>{`${id} | ${description}`}</Description>
                     <Divider />
-                    <CoverageDates>{`${coverage_start_date} to ${coverage_end_date}`}</CoverageDates>
-                    <CoverageDatesTitle>Coverage dates</CoverageDatesTitle>
-                    <img src={partner.logo} alt="logo" />
+                    <CoverageContainer>
+                      <CoverageDatesContainer>
+                        <CoverageDates>{`${coverage_start_date} to ${coverage_end_date}`}</CoverageDates>
+                        <CoverageDatesTitle>Coverage dates</CoverageDatesTitle>
+                      </CoverageDatesContainer>
+                      <PartnerImage src={partner.logo} alt="logo" />
+                    </CoverageContainer>
                   </InsurancePolicy>
                 </InsuranceCard>
               </Col>
@@ -52,7 +56,7 @@ const App = () => {
 export default App
 
 const StyledContainer = styled(Container)`
-  height: 100vh;
+  height: 100%;
   background-color: #f6f6f6;
   padding-right: 16px;
   padding-left: 16px;
@@ -75,6 +79,7 @@ const InsuranceCard = styled.div`
   border: 1px solid #e6e6e6;
   background-color: #ffffff;
   border-radius: 4px;
+  margin-bottom: 16px;
 `
 const InsurancePolicy = styled.div`
   margin-left: 16px;
@@ -104,7 +109,7 @@ const Divider = styled.div`
   border-bottom: 1px solid #e0e4e8;
 `
 
-const CoverageDates = styled.h4`
+const CoverageDates = styled.span`
   margin-top: 8px;
   font-family: brandon-grotesque;
   font-style: normal;
@@ -113,7 +118,11 @@ const CoverageDates = styled.h4`
   line-height: 24px;
   color: #2d2d2d;
 `
-const CoverageDatesTitle = styled.h4`
+const PartnerImage = styled.img`
+  width: 89px;
+  margin-left: auto;
+`
+const CoverageDatesTitle = styled.span`
   margin-top: 4px;
   font-family: bitter;
   font-style: normal;
@@ -121,4 +130,13 @@ const CoverageDatesTitle = styled.h4`
   font-size: 12px;
   line-height: 18px;
   color: #73777c;
+`
+
+const CoverageContainer = styled.div`
+  display: flex;
+`
+
+const CoverageDatesContainer = styled.div`
+  flex-direction: column;
+  display: flex;
 `

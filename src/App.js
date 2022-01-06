@@ -58,8 +58,8 @@ export default App
 const StyledContainer = styled(Container)`
   height: 100%;
   background-color: #f6f6f6;
-  padding-right: 16px;
-  padding-left: 16px;
+  padding-right: 5.85%;
+  padding-left: 5.85%;
 `
 
 const PageTitle = styled.h2`
@@ -67,6 +67,10 @@ const PageTitle = styled.h2`
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
+  @media (min-width: 835px) {
+    font-size: 32px;
+    line-height: 40px;
+  }
   line-height: 30px;
   color: #2d2d2d;
   padding-top: 16px;
@@ -74,7 +78,7 @@ const PageTitle = styled.h2`
 `
 
 const InsuranceCard = styled.div`
-  width: 343px;
+  width: 100%;
   height: 164px;
   border: 1px solid #e6e6e6;
   background-color: #ffffff;
@@ -90,6 +94,11 @@ const Title = styled.h3`
   margin-bottom: 4px;
   font-size: 18px;
   line-height: 22px;
+
+  @media (min-width: 835px) {
+    font-size: 20px;
+    line-height: 30px;
+  }
   font-family: brandon-grotesque;
   font-style: normal;
   font-weight: bold;
@@ -101,6 +110,10 @@ const Description = styled.p`
   font-weight: normal;
   font-size: 14px;
   line-height: 21px;
+  @media (min-width: 835px) {
+    font-size: 14px;
+    line-height: 21px;
+  }
   margin-bottom: 8px;
   color: #73777c;
 `

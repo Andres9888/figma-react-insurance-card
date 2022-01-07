@@ -2,11 +2,12 @@ import React from "react"
 import useSWR from "swr"
 import axios from "axios"
 import { Container, Row, Col } from "react-bootstrap"
-import styled from "styled-components"
+import { CircleIcon } from "./components/circle"
 import * as dayjs from "dayjs"
+import styled from "styled-components"
 
-import { Icon } from "@iconify/react"
 const fetcher = (url) => axios.get(url).then((res) => res.data)
+
 const App = () => {
   const { data, error } = useSWR(
     "https://7946a218-d225-4d0e-80ac-450bbc9713a0.mock.pstmn.io/booking",
@@ -38,9 +39,7 @@ const App = () => {
                 <InsuranceCard>
                   <InsurancePolicy>
                     <FlexRow>
-                      <Circle>
-                        <StyledIcon icon="octicon:chevron-right-16" />
-                      </Circle>
+                      <CircleIcon />
                       <FlexColumn>
                         <Title>{title}</Title>
                         <Description>{`${id} | ${description}`}</Description>
@@ -49,14 +48,14 @@ const App = () => {
                     </FlexRow>
                     <Divider />
                     <CoverageContainer>
-                      <PaymentDateContainer>
-                        <PaymentDates>
+                      <PolicyTermsContainer>
+                        <PolicyTerms>
                           {dayjs(payment_date)
                             .format("DD-MMM-YYYY")
                             .toUpperCase()}
-                        </PaymentDates>
-                        <PaymentDateTitle>Payment date</PaymentDateTitle>
-                      </PaymentDateContainer>
+                        </PolicyTerms>
+                        <PolicyTermsTitle>Payment date</PolicyTermsTitle>
+                      </PolicyTermsContainer>
                       <VerticalDivider />
                       <CoverageDatesContainer>
                         <CoverageDates>{`${dayjs(coverage_start_date)
@@ -68,18 +67,18 @@ const App = () => {
                       </CoverageDatesContainer>
                       <PartnerImageMobile src={partner.logo} alt="logo" />
                       <VerticalDivider />
-                      <PriceContainer>
-                        <Price>{premium_formatted}</Price>
-                        <PriceTitle>Price/Premium</PriceTitle>
-                      </PriceContainer>
+                      <PolicyTermsContainer>
+                        <PolicyTerms>{premium_formatted}</PolicyTerms>
+                        <PolicyTermsTitle>Price/Premium</PolicyTermsTitle>
+                      </PolicyTermsContainer>
 
                       {renewal && (
                         <>
                           <VerticalDivider />
-                          <RenewalDateContainer>
-                            <RenewalDate>{renewal}</RenewalDate>
-                            <RenewalDateTitle>Renewal date</RenewalDateTitle>
-                          </RenewalDateContainer>
+                          <PolicyTermsContainer>
+                            <PolicyTerms>{renewal}</PolicyTerms>
+                            <PolicyTermsTitle>Renewal date</PolicyTermsTitle>
+                          </PolicyTermsContainer>
                         </>
                       )}
                     </CoverageContainer>
@@ -135,32 +134,15 @@ const PageTitle = styled.h2`
 
 const InsuranceCard = styled.div`
   width: 100%;
-  height: 164px;
+  height: 168px;
   border: 1px solid #e6e6e6;
   background-color: #ffffff;
   border-radius: 4px;
   margin-bottom: 16px;
   @media (min-width: 1288px) {
     margin-bottom: 32px;
+    height: 165px;
   }
-`
-
-const Circle = styled.div`
-  display: none;
-  @media (min-width: 835px) {
-    display: flex;
-  }
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  background: none;
-  border: 2px solid #ffe600;
-  margin-top: 21px;
-  margin-right: 16px;
-`
-const StyledIcon = styled(Icon)`
-  display: block;
-  margin: auto;
 `
 const InsurancePolicy = styled.div`
   margin-left: 16px;
@@ -196,23 +178,30 @@ const Description = styled.p`
     line-height: 21px;
   }
   margin-bottom: 8px;
+  @media (min-width: 1288px) {
+    margin-bottom: 16px;
+  }
   color: #73777c;
 `
 
 const Divider = styled.div`
   border: 1px solid #e0e4e8;
+  @media (min-width: 1288px) {
+    width: 77%;
+  }
 `
 const VerticalDivider = styled.div`
   display: none;
   border: 1px solid #e0e4e8;
   height: 43px;
   margin-top: 16px;
+  margin-left: 16px;
+  margin-right: 16px;
   @media (min-width: 835px) {
     display: inline-block;
   }
 `
-const PaymentDates = styled.span`
-  margin-top: 8px;
+const PolicyTerms = styled.span`
   font-family: brandon-grotesque;
   font-style: normal;
   font-weight: 300;
@@ -221,12 +210,16 @@ const PaymentDates = styled.span`
   color: #2d2d2d;
   display: none;
   text-transform: uppercase;
+
   @media (min-width: 835px) {
     display: flex;
+    font-size: 16px;
+    line-height: 24px;
+    margin-top: 16px;
   }
 `
 
-const PaymentDateTitle = styled.span`
+const PolicyTermsTitle = styled.span`
   margin-top: 4px;
   font-family: bitter;
   font-size: 12px;
@@ -246,6 +239,9 @@ const CoverageDates = styled.span`
   font-size: 16px;
   line-height: 24px;
   color: #2d2d2d;
+  @media (min-width: 835px) {
+    margin-top: 16px;
+  }
 `
 const PartnerImage = styled.img`
   width: 111px;
@@ -253,6 +249,10 @@ const PartnerImage = styled.img`
   display: none;
   @media (min-width: 835px) {
     display: flex;
+  }
+  @media (min-width: 1288px) {
+    width: 192px;
+    margin-bottom: -80px;
   }
 `
 const PartnerImageMobile = styled.img`
@@ -288,92 +288,17 @@ const FlexColumn = styled.div`
   }
 `
 
-const PaymentDateContainer = styled.div`
+const PolicyTermsContainer = styled.div`
   display: flex;
   flex-direction: column;
   @media (min-width: 835px) {
-    margin-right: 16px;
   }
 `
 
 const CoverageDatesContainer = styled.div`
   flex-direction: column;
   display: flex;
-  margin-right: 16px;
-  @media (min-width: 835px) {
-    margin-left: 16px;
-  }
-`
 
-const PriceContainer = styled.div`
-  display: none;
-  flex-direction: column;
   @media (min-width: 835px) {
-    margin-left: 16px;
-    margin-right: 16px;
-    display: flex;
-  }
-`
-
-const Price = styled.span`
-  margin-top: 8px;
-  font-family: brandon-grotesque;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 24px;
-  color: #2d2d2d;
-  display: none;
-  text-transform: uppercase;
-  @media (min-width: 835px) {
-    display: flex;
-  }
-`
-
-const PriceTitle = styled.span`
-  margin-top: 4px;
-  font-family: bitter;
-  font-size: 12px;
-  line-height: 18px;
-  color: #73777c;
-  display: none;
-  @media (min-width: 835px) {
-    display: flex;
-  }
-`
-
-const RenewalDateContainer = styled.div`
-  display: none;
-  flex-direction: column;
-  @media (min-width: 835px) {
-    margin-left: 16px;
-    display: flex;
-  }
-`
-
-const RenewalDate = styled.span`
-  margin-top: 8px;
-  font-family: brandon-grotesque;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 16px;
-  line-height: 24px;
-  color: #2d2d2d;
-  display: none;
-  text-transform: uppercase;
-  @media (min-width: 835px) {
-    display: flex;
-  }
-`
-
-const RenewalDateTitle = styled.span`
-  margin-top: 4px;
-  font-family: bitter;
-  font-size: 12px;
-  line-height: 18px;
-  color: #73777c;
-  display: none;
-  @media (min-width: 835px) {
-    display: flex;
   }
 `

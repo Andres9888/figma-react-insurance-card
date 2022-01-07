@@ -79,7 +79,7 @@ export const InsuranceCardBox = ({ policy }) => {
 
 const InsuranceCard = styled.div`
   width: 100%;
-  height: 168px;
+  height: 164px;
   border: 1px solid #e6e6e6;
   background-color: #ffffff;
   border-radius: 4px;
@@ -120,6 +120,7 @@ const CoverageDates = styled.span`
   font-size: 16px;
   line-height: 24px;
   color: #2d2d2d;
+  letter-spacing: -0.75px;
   @media (min-width: 835px) {
     margin-top: 16px;
   }
@@ -149,7 +150,4 @@ const CoverageContainer = styled.div`
 const CoverageDatesContainer = styled.div`
   flex-direction: column;
   display: flex;
-
-  @media (min-width: 835px) {
-  }
 `

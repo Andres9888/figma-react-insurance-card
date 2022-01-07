@@ -29,6 +29,8 @@ const App = () => {
           coverage_end_date,
           payment_date,
           partner,
+          premium_formatted,
+          renewal,
         }) => {
           return (
             <Row>
@@ -37,12 +39,13 @@ const App = () => {
                   <InsurancePolicy>
                     <FlexRow>
                       <Circle>
-                        <Icon icon="octicon:chevron-right-16" />
+                        <StyledIcon icon="octicon:chevron-right-16" />
                       </Circle>
                       <FlexColumn>
                         <Title>{title}</Title>
                         <Description>{`${id} | ${description}`}</Description>
                       </FlexColumn>
+                      <PartnerImage src={partner.logo} alt="logo" />
                     </FlexRow>
                     <Divider />
                     <CoverageContainer>
@@ -63,7 +66,22 @@ const App = () => {
                           .toUpperCase()}`}</CoverageDates>
                         <CoverageDatesTitle>Coverage dates</CoverageDatesTitle>
                       </CoverageDatesContainer>
-                      <PartnerImage src={partner.logo} alt="logo" />
+                      <PartnerImageMobile src={partner.logo} alt="logo" />
+                      <VerticalDivider />
+                      <PriceContainer>
+                        <Price>{premium_formatted}</Price>
+                        <PriceTitle>Price/Premium</PriceTitle>
+                      </PriceContainer>
+
+                      {renewal && (
+                        <>
+                          <VerticalDivider />
+                          <RenewalDateContainer>
+                            <RenewalDate>{renewal}</RenewalDate>
+                            <RenewalDateTitle>Renewal date</RenewalDateTitle>
+                          </RenewalDateContainer>
+                        </>
+                      )}
                     </CoverageContainer>
                   </InsurancePolicy>
                 </InsuranceCard>
@@ -83,6 +101,14 @@ const StyledContainer = styled(Container)`
   background-color: #f6f6f6;
   padding-right: 5.85%;
   padding-left: 5.85%;
+  @media (min-width: 835px and max-width: 1287px) {
+    padding-right: 6.82%;
+    padding-left: 6.82%;
+  }
+  @media (min-width: 1288px) {
+    padding-right: 6.32%;
+    padding-left: 6.32%;
+  }
 `
 
 const PageTitle = styled.h2`
@@ -90,10 +116,17 @@ const PageTitle = styled.h2`
   font-style: normal;
   font-weight: 900;
   font-size: 24px;
-  @media (min-width: 835px) {
+  @media (min-width: 835px and max-width: 1287px) {
     font-size: 32px;
     line-height: 40px;
   }
+  @media (min-width: 1288px) {
+    padding-top: 48px;
+    font-size: 40px;
+    line-height: 50px;
+    margin-bottom: 24px;
+  }
+
   line-height: 30px;
   color: #2d2d2d;
   padding-top: 16px;
@@ -107,12 +140,15 @@ const InsuranceCard = styled.div`
   background-color: #ffffff;
   border-radius: 4px;
   margin-bottom: 16px;
+  @media (min-width: 1288px) {
+    margin-bottom: 32px;
+  }
 `
 
 const Circle = styled.div`
   display: none;
   @media (min-width: 835px) {
-    display: block;
+    display: flex;
   }
   border-radius: 50%;
   width: 48px;
@@ -122,7 +158,10 @@ const Circle = styled.div`
   margin-top: 21px;
   margin-right: 16px;
 `
-
+const StyledIcon = styled(Icon)`
+  display: block;
+  margin: auto;
+`
 const InsurancePolicy = styled.div`
   margin-left: 16px;
   margin-right: 16px;
@@ -133,8 +172,12 @@ const Title = styled.h3`
   font-size: 18px;
   line-height: 22px;
 
-  @media (min-width: 835px) {
+  @media (min-width: 835px and max-width: 1287px) {
     font-size: 20px;
+    line-height: 30px;
+  }
+  @media (min-width: 1288px) {
+    font-size: 24px;
     line-height: 30px;
   }
   font-family: brandon-grotesque;
@@ -205,6 +248,14 @@ const CoverageDates = styled.span`
   color: #2d2d2d;
 `
 const PartnerImage = styled.img`
+  width: 111px;
+  margin-left: auto;
+  display: none;
+  @media (min-width: 835px) {
+    display: flex;
+  }
+`
+const PartnerImageMobile = styled.img`
   width: 89px;
   margin-left: auto;
   @media (min-width: 835px) {
@@ -248,7 +299,81 @@ const PaymentDateContainer = styled.div`
 const CoverageDatesContainer = styled.div`
   flex-direction: column;
   display: flex;
+  margin-right: 16px;
   @media (min-width: 835px) {
     margin-left: 16px;
+  }
+`
+
+const PriceContainer = styled.div`
+  display: none;
+  flex-direction: column;
+  @media (min-width: 835px) {
+    margin-left: 16px;
+    margin-right: 16px;
+    display: flex;
+  }
+`
+
+const Price = styled.span`
+  margin-top: 8px;
+  font-family: brandon-grotesque;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2d2d2d;
+  display: none;
+  text-transform: uppercase;
+  @media (min-width: 835px) {
+    display: flex;
+  }
+`
+
+const PriceTitle = styled.span`
+  margin-top: 4px;
+  font-family: bitter;
+  font-size: 12px;
+  line-height: 18px;
+  color: #73777c;
+  display: none;
+  @media (min-width: 835px) {
+    display: flex;
+  }
+`
+
+const RenewalDateContainer = styled.div`
+  display: none;
+  flex-direction: column;
+  @media (min-width: 835px) {
+    margin-left: 16px;
+    display: flex;
+  }
+`
+
+const RenewalDate = styled.span`
+  margin-top: 8px;
+  font-family: brandon-grotesque;
+  font-style: normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 24px;
+  color: #2d2d2d;
+  display: none;
+  text-transform: uppercase;
+  @media (min-width: 835px) {
+    display: flex;
+  }
+`
+
+const RenewalDateTitle = styled.span`
+  margin-top: 4px;
+  font-family: bitter;
+  font-size: 12px;
+  line-height: 18px;
+  color: #73777c;
+  display: none;
+  @media (min-width: 835px) {
+    display: flex;
   }
 `

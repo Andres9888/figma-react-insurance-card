@@ -2,14 +2,9 @@ import React, { useState } from "react"
 import { Icon } from "@iconify/react"
 import styled from "styled-components"
 
-export const CircleIcon = () => {
-  const [open, setOpen] = useState(false)
-
-  const handleClick = () => {
-    setOpen(!open)
-  }
+export const CircleIcon = ({ open }) => {
   return (
-    <Circle open={open} onClick={handleClick}>
+    <Circle open={open}>
       <StyledIcon icon="octicon:chevron-right-16" rotate={open ? 1 : 0} />
     </Circle>
   )

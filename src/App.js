@@ -1,9 +1,11 @@
 import React from "react"
-import useSWR from "swr"
+
 import axios from "axios"
 import { Container } from "react-bootstrap"
-import { InsuranceCardBox } from "./components/InsuranceCard"
 import styled from "styled-components"
+import useSWR from "swr"
+
+import { InsuranceCardBox } from "./sections/InsuranceCard"
 
 const fetcher = (url) => axios.get(url).then((res) => res.data)
 
@@ -30,10 +32,10 @@ const App = () => {
 export default App
 
 const StyledContainer = styled(Container)`
-  height: 100vh;
   background-color: #f6f6f6;
-  padding-right: 5.85%;
+  height: 100vh;
   padding-left: 5.85%;
+  padding-right: 5.85%;
   @media (min-width: 835px and max-width: 1287px) {
     padding-right: 6.82%;
     padding-left: 6.82%;
@@ -45,10 +47,10 @@ const StyledContainer = styled(Container)`
 `
 
 const PageTitle = styled.h2`
+  color: #2d2d2d;
   font-family: brandon-grotesque;
-  font-style: normal;
-  font-weight: 900;
   font-size: 24px;
+  font-style: normal;
   @media (min-width: 835px and max-width: 1287px) {
     font-size: 32px;
     line-height: 40px;
@@ -60,8 +62,8 @@ const PageTitle = styled.h2`
     margin-bottom: 24px;
   }
 
+  font-weight: 900;
   line-height: 30px;
-  color: #2d2d2d;
-  padding-top: 16px;
   margin-bottom: 8px;
+  padding-top: 16px;
 `

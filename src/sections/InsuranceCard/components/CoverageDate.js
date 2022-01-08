@@ -1,6 +1,8 @@
 import React from "react"
+
 import styled from "styled-components"
-import { formatDate } from "../helper/formatDate"
+
+import { formatDate } from "../../../helper/formatDate"
 export const Coverage = ({
   coverage_start_date,
   coverage_end_date,

@@ -1,5 +1,7 @@
 import React from "react"
-import { CircleIcon } from "../components/circle"
+
+import { CircleIcon } from "./components"
+
 import styled from "styled-components"
 
 export const InsuranceHeadline = ({ policy, open }) => {

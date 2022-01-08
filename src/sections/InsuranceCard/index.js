@@ -1,9 +1,11 @@
 import React, { useState } from "react"
-import { Row, Col } from "react-bootstrap"
-import { InsuranceHeadline, Terms, Coverage } from "../components"
 
+import { Row, Col } from "react-bootstrap"
 import styled from "styled-components"
-import { formatDate } from "../helper/formatDate"
+
+import { formatDate } from "../../helper/formatDate"
+import { InsuranceHeadline, Terms, Coverage } from "./components"
+
 export const InsuranceCardBox = ({ policy }) => {
   const [open, setOpen] = useState(false)
 
@@ -24,18 +26,18 @@ export const InsuranceCardBox = ({ policy }) => {
       <Col>
         <InsuranceCard open={open} onClick={handleClick}>
           <InsurancePolicy>
-            <InsuranceHeadline policy={policy} open={open} />
+            <InsuranceHeadline open={open} policy={policy} />
             <Divider />
             <CoverageContainer>
               <Terms PolicyTerm={formatDate(payment_date)}>Payment date</Terms>
               <VerticalDivider />
               <Coverage
-                coverage_start_date={coverage_start_date}
                 coverage_end_date={coverage_end_date}
+                coverage_start_date={coverage_start_date}
               >
                 Coverage dates
               </Coverage>
-              <PartnerImageMobile src={partner.logo} alt="logo" />
+              <PartnerImageMobile alt="logo" src={partner.logo} />
               <VerticalDivider />
               <Terms PolicyTerm={premium_formatted}>Price/Premium</Terms>
               {renewal && (
@@ -53,15 +55,14 @@ export const InsuranceCardBox = ({ policy }) => {
 }
 
 const InsuranceCard = styled.div`
-  width: 100%;
-  height: 164px;
-  border: 1px solid #e6e6e6;
-  background-color: #ffffff;
-  border-radius: 4px;
   margin-bottom: 16px;
-  box-shadow: ${(props) =>
-    props.open ? "0px 24px 32px 0px rgba(45, 45, 45, 0.16)" : "none"};
-
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 4px;
+  box-shadow: ${(properties) =>
+    properties.open ? "0px 24px 32px 0px rgba(45, 45, 45, 0.16)" : "none"};
+  height: 164px;
   @media (min-width: 835px and max-width: 1287px) {
     height: 168px;
   }
@@ -83,20 +84,20 @@ const Divider = styled.div`
   }
 `
 const VerticalDivider = styled.div`
-  display: none;
   border: 1px solid #e0e4e8;
+  display: none;
   height: 43px;
-  margin-top: 16px;
   margin-left: 16px;
   margin-right: 16px;
+  margin-top: 16px;
   @media (min-width: 835px) {
     display: inline-block;
   }
 `
 
 const PartnerImageMobile = styled.img`
-  width: 89px;
   margin-left: auto;
+  width: 89px;
   @media (min-width: 835px) {
     display: none;
   }

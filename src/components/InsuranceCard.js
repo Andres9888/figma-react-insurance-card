@@ -3,8 +3,8 @@ import { Row, Col } from "react-bootstrap"
 import * as dayjs from "dayjs"
 import { InsuranceHeadline } from "./InsuranceHeadlineText"
 import { Terms } from "./PolicyTerms"
+import { Coverage } from "./CoverageDate"
 import styled from "styled-components"
-
 export const InsuranceCardBox = ({ policy }) => {
   const [open, setOpen] = useState(false)
 
@@ -44,18 +44,12 @@ export const InsuranceCardBox = ({ policy }) => {
                 PolicyTermTitle="Payment date"
               />
               <VerticalDivider />
-              <CoverageDatesContainer>
-                <CoverageDates>{`${dayjs(coverage_start_date)
-                  .format("DD-MMM-YYYY")
-                  .toUpperCase()} to ${
-                  coverage_end_date
-                    ? dayjs(coverage_end_date)
-                        .format("DD-MMM-YYYY")
-                        .toUpperCase()
-                    : "No Date"
-                }`}</CoverageDates>
-                <CoverageDatesTitle>Coverage dates</CoverageDatesTitle>
-              </CoverageDatesContainer>
+              <Coverage
+                coverage_start_date={coverage_start_date}
+                coverage_end_date={coverage_end_date}
+              >
+                Coverage dates
+              </Coverage>
               <PartnerImageMobile src={partner.logo} alt="logo" />
               <VerticalDivider />
               <Terms

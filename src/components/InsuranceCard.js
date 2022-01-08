@@ -1,10 +1,9 @@
 import React, { useState } from "react"
 import { Row, Col } from "react-bootstrap"
-import * as dayjs from "dayjs"
-import { InsuranceHeadline } from "./InsuranceHeadlineText"
-import { Terms } from "./PolicyTerms"
-import { Coverage } from "./CoverageDate"
+import { InsuranceHeadline, Terms, Coverage } from "../components"
+
 import styled from "styled-components"
+import { formatDate } from "../helper/formatDate"
 export const InsuranceCardBox = ({ policy }) => {
   const [open, setOpen] = useState(false)
 
@@ -12,9 +11,6 @@ export const InsuranceCardBox = ({ policy }) => {
     setOpen(!open)
   }
   const {
-    title,
-    id,
-    description,
     coverage_start_date,
     coverage_end_date,
     payment_date,
@@ -28,21 +24,10 @@ export const InsuranceCardBox = ({ policy }) => {
       <Col>
         <InsuranceCard open={open} onClick={handleClick}>
           <InsurancePolicy>
-            <InsuranceHeadline
-              open={open}
-              title={title}
-              id={id}
-              description={description}
-              partner={partner}
-            />
+            <InsuranceHeadline policy={policy} open={open} />
             <Divider />
             <CoverageContainer>
-              <Terms
-                PolicyTerm={dayjs(payment_date)
-                  .format("DD-MMM-YYYY")
-                  .toUpperCase()}
-                PolicyTermTitle="Payment date"
-              />
+              <Terms PolicyTerm={formatDate(payment_date)}>Payment date</Terms>
               <VerticalDivider />
               <Coverage
                 coverage_start_date={coverage_start_date}
@@ -52,15 +37,11 @@ export const InsuranceCardBox = ({ policy }) => {
               </Coverage>
               <PartnerImageMobile src={partner.logo} alt="logo" />
               <VerticalDivider />
-              <Terms
-                PolicyTerm={premium_formatted}
-                PolicyTermTitle="Price/Premium"
-              />
-
+              <Terms PolicyTerm={premium_formatted}>Price/Premium</Terms>
               {renewal && (
                 <>
                   <VerticalDivider />
-                  <Terms PolicyTerm={renewal} PolicyTermTitle="Renewal date" />
+                  <Terms PolicyTerm={renewal}>Renewal date</Terms>
                 </>
               )}
             </CoverageContainer>
@@ -109,24 +90,6 @@ const VerticalDivider = styled.div`
   }
 `
 
-const CoverageDates = styled.span`
-  margin-top: 8px;
-  font-family: brandon-grotesque;
-  font-style: normal;
-  font-weight: 300;
-  font-size: 12px;
-  @media (min-width: 375px) {
-    font-size: 16px;
-  }
-
-  line-height: 24px;
-  color: #2d2d2d;
-  letter-spacing: -0.75px;
-  @media (min-width: 835px) {
-    margin-top: 16px;
-  }
-`
-
 const PartnerImageMobile = styled.img`
   width: 89px;
   margin-left: auto;
@@ -134,26 +97,7 @@ const PartnerImageMobile = styled.img`
     display: none;
   }
 `
-const CoverageDatesTitle = styled.span`
-  margin-top: 4px;
-  font-family: bitter;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 10px;
-
-  @media (min-width: 375px) {
-    font-size: 12px;
-  }
-
-  line-height: 18px;
-  color: #73777c;
-`
 
 const CoverageContainer = styled.div`
-  display: flex;
-`
-
-const CoverageDatesContainer = styled.div`
-  flex-direction: column;
   display: flex;
 `

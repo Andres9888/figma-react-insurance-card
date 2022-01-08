@@ -1,7 +1,6 @@
 import React from "react"
 import styled from "styled-components"
-import * as dayjs from "dayjs"
-
+import { formatDate } from "../helper/formatDate"
 export const Coverage = ({
   coverage_start_date,
   coverage_end_date,
@@ -9,12 +8,8 @@ export const Coverage = ({
 }) => {
   return (
     <CoverageDatesContainer>
-      <CoverageDates>{`${dayjs(coverage_start_date)
-        .format("DD-MMM-YYYY")
-        .toUpperCase()} to ${
-        coverage_end_date
-          ? dayjs(coverage_end_date).format("DD-MMM-YYYY").toUpperCase()
-          : "No Date"
+      <CoverageDates>{`${formatDate(coverage_start_date)} to ${
+        coverage_end_date ? formatDate(coverage_end_date) : "No Date"
       }`}</CoverageDates>
       <CoverageDatesTitle>{children}</CoverageDatesTitle>
     </CoverageDatesContainer>

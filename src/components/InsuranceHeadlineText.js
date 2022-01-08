@@ -2,13 +2,9 @@ import React from "react"
 import { CircleIcon } from "../components/circle"
 import styled from "styled-components"
 
-export const InsuranceHeadline = ({
-  open,
-  title,
-  id,
-  description,
-  partner,
-}) => {
+export const InsuranceHeadline = ({ policy, open }) => {
+  const { title, id, description, partner } = policy
+
   return (
     <FlexRow>
       <CircleIcon open={open} />

@@ -2,11 +2,11 @@ import React from "react"
 
 import styled from "styled-components"
 
-export const Terms = ({ PolicyTerm, PolicyTermTitle }) => {
+export const Terms = ({ PolicyTerm, children }) => {
   return (
     <PolicyTermsContainer>
       <PolicyTerms>{PolicyTerm}</PolicyTerms>
-      <PolicyTermsTitle>{PolicyTermTitle}</PolicyTermsTitle>
+      <PolicyTermsTitle>{children}</PolicyTermsTitle>
     </PolicyTermsContainer>
   )
 }

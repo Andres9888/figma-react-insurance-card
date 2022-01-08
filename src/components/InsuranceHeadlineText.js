@@ -55,6 +55,8 @@ const Description = styled.p`
 const PartnerImage = styled.img`
   width: 111px;
   margin-left: auto;
+  margin-top: auto;
+  margin-bottom: auto;
   display: none;
   @media (min-width: 835px) {
     display: flex;
@@ -62,6 +64,13 @@ const PartnerImage = styled.img`
   @media (min-width: 1288px) {
     width: 192px;
     margin-bottom: -80px;
+    margin-top: 0px;
+  }
+  @media (min-width: 1288px) and (-ms-high-contrast: none),
+    (-ms-high-contrast: active) {
+    /* IE10+ CSS styles go here */
+
+    margin-bottom: -40px;
   }
 `
 const FlexRow = styled.div`

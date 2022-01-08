@@ -62,6 +62,10 @@ const InsuranceCard = styled.div`
   box-shadow: ${(props) =>
     props.open ? "0px 24px 32px 0px rgba(45, 45, 45, 0.16)" : "none"};
 
+  @media (min-width: 835px and max-width: 1287px) {
+    height: 168px;
+  }
+
   @media (min-width: 1288px) {
     margin-bottom: 32px;
     height: 165px;

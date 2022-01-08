@@ -120,7 +120,11 @@ const CoverageDates = styled.span`
   font-family: brandon-grotesque;
   font-style: normal;
   font-weight: 300;
-  font-size: 16px;
+  font-size: 12px;
+  @media (min-width: 375px) {
+    font-size: 16px;
+  }
+
   line-height: 24px;
   color: #2d2d2d;
   letter-spacing: -0.75px;
@@ -141,7 +145,12 @@ const CoverageDatesTitle = styled.span`
   font-family: bitter;
   font-style: normal;
   font-weight: normal;
-  font-size: 12px;
+  font-size: 10px;
+
+  @media (min-width: 375px) {
+    font-size: 12px;
+  }
+
   line-height: 18px;
   color: #73777c;
 `

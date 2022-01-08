@@ -30,7 +30,7 @@ const App = () => {
 export default App
 
 const StyledContainer = styled(Container)`
-  height: 100%;
+  height: 100vh;
   background-color: #f6f6f6;
   padding-right: 5.85%;
   padding-left: 5.85%;

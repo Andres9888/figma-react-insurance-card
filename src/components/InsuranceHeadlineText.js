@@ -44,7 +44,10 @@ const Description = styled.p`
   font-family: bitter;
   font-style: normal;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 12px;
+  @media (min-width: 375px) {
+    font-size: 14px;
+  }
   line-height: 21px;
   margin-bottom: 8px;
 

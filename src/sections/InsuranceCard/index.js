@@ -9,9 +9,6 @@ import { InsuranceHeadline, Terms, Coverage } from "./components"
 export const InsuranceCardBox = ({ policy }) => {
   const [open, setOpen] = useState(false)
 
-  const handleClick = () => {
-    setOpen(!open)
-  }
   const {
     coverage_start_date,
     coverage_end_date,
@@ -24,7 +21,12 @@ export const InsuranceCardBox = ({ policy }) => {
   return (
     <Row>
       <Col>
-        <InsuranceCard open={open} onClick={handleClick}>
+        <InsuranceCard
+          open={open}
+          onClick={() => {
+            setOpen(!open)
+          }}
+        >
           <InsurancePolicy>
             <InsuranceHeadline open={open} policy={policy} />
             <Divider />

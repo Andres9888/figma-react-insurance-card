@@ -1,5 +1,7 @@
 import React from "react"
+
 import { Icon } from "@iconify/react"
+
 import styled from "styled-components"
 
 export const CircleIcon = ({ open }) => {

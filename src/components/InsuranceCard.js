@@ -26,7 +26,7 @@ export const InsuranceCardBox = ({ policy }) => {
   return (
     <Row>
       <Col>
-        <InsuranceCard onClick={handleClick}>
+        <InsuranceCard open={open} onClick={handleClick}>
           <InsurancePolicy>
             <InsuranceHeadline
               open={open}
@@ -84,6 +84,9 @@ const InsuranceCard = styled.div`
   background-color: #ffffff;
   border-radius: 4px;
   margin-bottom: 16px;
+  box-shadow: ${(props) =>
+    props.open ? "0px 24px 32px 0px rgba(45, 45, 45, 0.16)" : "none"};
+
   @media (min-width: 1288px) {
     margin-bottom: 32px;
     height: 165px;

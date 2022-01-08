@@ -46,12 +46,9 @@ const Description = styled.p`
   font-weight: normal;
   font-size: 14px;
   line-height: 21px;
-  @media (min-width: 835px) {
-    font-size: 14px;
-    line-height: 21px;
-  }
   margin-bottom: 8px;
-  @media (min-width: 1288px) {
+
+  @media (min-width: 835px) {
     margin-bottom: 16px;
   }
   color: #73777c;

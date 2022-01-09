@@ -51,6 +51,10 @@ const PageTitle = styled.h2`
   font-family: brandon-grotesque;
   font-size: 24px;
   font-style: normal;
+  font-weight: 900;
+  line-height: 30px;
+  margin-bottom: 8px;
+  padding-top: 16px;
   @media (min-width: 835px and max-width: 1287px) {
     font-size: 32px;
     line-height: 40px;
@@ -61,9 +65,4 @@ const PageTitle = styled.h2`
     line-height: 50px;
     margin-bottom: 24px;
   }
-
-  font-weight: 900;
-  line-height: 30px;
-  margin-bottom: 8px;
-  padding-top: 16px;
 `

@@ -24,13 +24,12 @@ const CoverageDates = styled.span`
   font-style: normal;
   font-weight: 300;
   font-size: 12px;
-  @media (min-width: 375px) {
-    font-size: 16px;
-  }
-
   line-height: 24px;
   color: #2d2d2d;
   letter-spacing: -0.75px;
+  @media (min-width: 375px) {
+    font-size: 16px;
+  }
   @media (min-width: 835px) {
     margin-top: 16px;
   }
@@ -47,11 +46,9 @@ const CoverageDatesTitle = styled.span`
   font-style: normal;
   font-weight: normal;
   font-size: 10px;
-
+  line-height: 18px;
+  color: #73777c;
   @media (min-width: 375px) {
     font-size: 12px;
   }
-
-  line-height: 18px;
-  color: #73777c;
 `

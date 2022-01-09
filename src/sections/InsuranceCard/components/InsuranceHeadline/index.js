@@ -24,7 +24,10 @@ const Title = styled.h3`
   margin-bottom: 4px;
   font-size: 18px;
   line-height: 22px;
-
+  font-family: brandon-grotesque;
+  font-style: normal;
+  font-weight: bold;
+  color: #2d2d2d;
   @media (min-width: 835px and max-width: 1287px) {
     font-size: 20px;
     line-height: 30px;
@@ -33,10 +36,6 @@ const Title = styled.h3`
     font-size: 24px;
     line-height: 30px;
   }
-  font-family: brandon-grotesque;
-  font-style: normal;
-  font-weight: bold;
-  color: #2d2d2d;
 `
 const Description = styled.p`
   font-family: bitter;

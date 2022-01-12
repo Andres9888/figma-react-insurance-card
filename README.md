@@ -2,6 +2,12 @@
 
 This React project involves creating an insurance policy card component and requesting data from an API endpoint to build a listing of policies.
 
+## Installation
+
+npm install
+
+npm run start
+
 ## Design
 
 You can find the design spec for this project here: [https://www.figma.com/file/fGW83zI7thrOaCjB3O4gHRAZ/DEV-Test](https://www.figma.com/file/fGW83zI7thrOaCjB3O4gHRAZ/DEV-Test)
